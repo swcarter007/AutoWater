@@ -13,7 +13,7 @@ class WaterService:
             self._plantService = PlantService
             self._ioService = IOService
             self._fileService = FileService
-            IOService.init()
+            self._ioService.init()
         except Exception as e:
             raise e
         

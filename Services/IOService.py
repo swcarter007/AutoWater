@@ -6,30 +6,30 @@ OFF = GPIO.LOW
 
 class IOService:
     '''Class is responsible for communicating with the GPIO board'''
-        
-    def init():
+    def __init__(self, time):
+        self._time = time
         GPIO.setmode(GPIO.BCM) # Broadcom pin-numbering scheme
     
-    def cleanup():
+    def cleanup(self):
         GPIO.cleanup() # cleanup all GPI
     
-    def initOutput(pin):
+    def initOutput(self, pin):
         GPIO.setup(pin, GPIO.OUT)
         GPIO.output(pin, GPIO.LOW)
         GPIO.output(pin, GPIO.HIGH)
     
-    def updatePin(pin, value):
+    def updatePin(self, pin, value):
         GPIO.output(pin, GPIO.LOW)
     
-    def pumpOn(pin, delay = 1):
-        init_output(pin, value)
+    def pumpOn(self, pin, delay = 1):
+        self.initOutput(pin)
     
         GPIO.output(pin, GPIO.LOW)
-        time.sleep(delay)
+        self._time.sleep(delay)
         GPIO.output(pin, GPIO.HIGH)
     
     #gets the current status of the pin
-    def getStatus(pin):
+    def getStatus(self, pin):
         GPIO.setup(pin, GPIO.IN) 
         return GPIO.input(pin)
 

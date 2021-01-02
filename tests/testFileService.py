@@ -1,5 +1,5 @@
 import unittest
-from FileService.FileService import FileService
+from Services.FileService import FileService
 
 class FileServiceTest(unittest.TestCase):
     def setUp(self): 
@@ -23,6 +23,9 @@ class FileServiceTest(unittest.TestCase):
         file = FileService.read(self.fileName)
         result = file == ""
         self.assertTrue(result)
+
+    def tearDown(self):
+        FileService.delete(self.fileName)
 
 if __name__ == '__main__':
     unittest.main()
